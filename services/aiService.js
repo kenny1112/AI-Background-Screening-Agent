@@ -44,7 +44,6 @@ function getRuleScore(text, rules) {
 
 function sortBySeverity(items, rules) {
   if (!Array.isArray(items)) return [];
-
   return [...items].sort((a, b) => {
     const aScore = getRuleScore(String(a), rules);
     const bScore = getRuleScore(String(b), rules);
@@ -61,7 +60,6 @@ function normalizeScore(value) {
 
 function normalizeAnalysisResponse(raw) {
   const safe = raw && typeof raw === 'object' ? raw : {};
-
   return {
     risk_level: safe.risk_level || 'Medium',
     summary: safe.summary || 'No summary provided.',
@@ -84,7 +82,6 @@ Experience: ${candidateData.experience} years
 Education: ${candidateData.education}
 Employment history: ${candidateData.employment_history}
 Notes: ${candidateData.notes || 'None'}`;
-
   return await callGemini(prompt);
 }
 
@@ -94,7 +91,6 @@ Candidate: ${riskData.name}
 Industry: ${riskData.industry}
 Seniority: ${riskData.seniority}
 Specific concern: ${riskData.concern}`;
-
   return await callGemini(prompt);
 }
 
@@ -104,14 +100,12 @@ async function callGemini(prompt) {
   const modelsToTry = [preferredModel, ...fallbackModels.filter(m => m !== preferredModel)];
 
   let lastError;
-
   for (const modelName of modelsToTry) {
     try {
       const model = client.getGenerativeModel({
         model: modelName,
         systemInstruction: SYSTEM_PROMPT
       });
-
       const result = await model.generateContent(prompt);
       const text = result.response.text();
       const cleaned = text.replace(/```json|```/g, '').trim();
@@ -121,7 +115,6 @@ async function callGemini(prompt) {
       lastError = error;
     }
   }
-
   throw lastError;
 }
 
