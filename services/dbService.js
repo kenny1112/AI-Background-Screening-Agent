@@ -1,8 +1,16 @@
 const { Pool } = require('pg');
 
+/* Render / cloud Postgres requires TLS; local postgres usually does not */
+function sslForDatabaseUrl(url) {
+  if (!url) return false;
+  return /localhost|127\.0\.0\.1/i.test(url)
+    ? false
+    : { rejectUnauthorized: false };
+}
+
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+  ssl: sslForDatabaseUrl(process.env.DATABASE_URL),
   max: 10,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 5000,
