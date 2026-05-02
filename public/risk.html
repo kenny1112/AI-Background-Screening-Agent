@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Risk Check — VeriScreen AI</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      Screening Ops
+    </div>
+    <nav class="sidebar-nav">
+      <a href="/index.html" class="nav-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+          <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+        </svg>
+        Analyze Candidate
+      </a>
+      <a href="/risk.html" class="nav-item active">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        Risk Check
+      </a>
+      <a href="/history.html" class="nav-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+        Screening History
+      </a>
+      <a href="/settings.html" class="nav-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        Settings
+      </a>
+    </nav>
+    <div class="sidebar-status">
+      <div class="status-dot">Risk Protocol Active</div>
+      <div class="status-text">Enterprise Protocol 4.2 — 142 databases scanning</div>
+    </div>
+    <div class="sidebar-bottom">
+      <div class="sidebar-user">
+        <div class="user-avatar" id="sidebar-avatar">AT</div>
+        <div class="user-info">
+          <div class="user-name" id="sidebar-user-name">Kenny Chung</div>
+          <div class="user-role" id="sidebar-user-role">Chief Auditor</div>
+        </div>
+      </div>
+      <button class="logout-btn" onclick="logout()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+          <polyline points="16 17 21 12 16 7"/>
+          <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        Logout
+      </button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div class="topbar-left">
+        <div class="topbar-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="topbar-title">AI Background Screening</div>
+          <div class="topbar-sub">Risk Protocol Active</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div style="font-size:11px;color:var(--gray-4);text-align:right">
+          <div style="font-weight:600;color:#3b82f6;font-size:12px">ACTIVE SCAN</div>
+          Enterprise Protocol 4.2
+        </div>
+        <div class="topbar-avatar" id="topbar-avatar">AT</div>
+      </div>
+    </div>
+
+    <div class="page-content">
+      <div class="split">
+
+        <!-- Left: Form -->
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+              <div style="width:44px;height:44px;background:var(--blue);border-radius:10px;display:flex;align-items:center;justify-content:center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+                </svg>
+              </div>
+              <div>
+                <div class="card-title">Precision Risk Engine</div>
+                <div class="card-sub">Verify candidate integrity across global nodes.</div>
+              </div>
+            </div>
+
+            <div class="field-group" style="margin-bottom:16px">
+              <label class="field-label">Full Name *</label>
+              <div class="field-input-icon">
+                <span class="fi-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                  </svg>
+                </span>
+                <input class="field-input" type="text" id="risk-name" placeholder="e.g. Sam Reeves"/>
+              </div>
+            </div>
+
+            <div class="field-group" style="margin-bottom:16px">
+              <label class="field-label">Primary Concern *</label>
+              <select class="field-input" id="risk-concern-select" onchange="syncConcern(this.value)">
+                <option value="">Select concern...</option>
+                <option value="Financial Impropriety">Financial Impropriety</option>
+                <option value="Employment gap">Employment Gap</option>
+                <option value="Unverifiable credentials">Unverifiable Credentials</option>
+                <option value="Criminal history concern">Criminal History Concern</option>
+                <option value="Reference check failure">Reference Check Failure</option>
+                <option value="Custom">Custom concern...</option>
+              </select>
+            </div>
+
+            <div class="field-group" id="custom-concern-group" style="margin-bottom:16px;display:none">
+              <label class="field-label">Describe Concern</label>
+              <textarea class="field-input" id="risk-concern" placeholder="Describe the specific concern..." style="min-height:70px"></textarea>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+              <div class="field-group">
+                <label class="field-label">Industry</label>
+                <input class="field-input" type="text" id="risk-industry" placeholder="FinTech"/>
+              </div>
+              <div class="field-group">
+                <label class="field-label">Seniority</label>
+                <select class="field-input" id="risk-seniority">
+                  <option value="">Select...</option>
+                  <option>Junior (0-3 yrs)</option>
+                  <option>Mid-level (3-7 yrs)</option>
+                  <option>Senior (7+ yrs)</option>
+                  <option>Executive (C-Suite)</option>
+                </select>
+              </div>
+            </div>
+
+            <button class="run-btn" id="risk-btn" onclick="runRisk()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+              Check Risk Profile
+            </button>
+            <button class="demo-btn" onclick="fillRiskDemo()">Load Demo</button>
+          </div>
+
+          <!-- Live Watchlist card -->
+          <div style="background:var(--navy-2);border-radius:var(--radius);padding:20px;position:relative;overflow:hidden;">
+            <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(59,130,246,0.1),transparent);pointer-events:none"></div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+              <div style="width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite"></div>
+              <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#22c55e">Live Global Watchlist</span>
+            </div>
+            <div style="font-size:26px;font-weight:700;color:white;margin-bottom:4px">142 Databases Scan</div>
+            <div style="font-size:12px;color:var(--gray-3)">Cross-jurisdictional verification active</div>
+          </div>
+        </div>
+
+        <!-- Right: Result -->
+        <div class="card" id="risk-result-panel">
+          <div class="result-empty">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <p>Submit a risk check to see<br>the analysis here</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<script src="/js/auth.js"></script>
+<script src="/js/app.js"></script>
+<script>
+  requireAuth();
+  initSidebarUser();
+
+  function syncConcern(val) {
+    const customGroup = document.getElementById('custom-concern-group');
+    if (val === 'Custom') {
+      customGroup.style.display = 'block';
+      document.getElementById('risk-concern').value = '';
+    } else {
+      customGroup.style.display = 'none';
+      document.getElementById('risk-concern') && (document.getElementById('risk-concern').value = val);
+    }
+  }
+
+  const origRunRisk = runRisk;
+  window.runRisk = async function() {
+    const name = document.getElementById('risk-name').value.trim();
+    const selectVal = document.getElementById('risk-concern-select').value;
+    const customVal = document.getElementById('risk-concern')?.value?.trim() || '';
+    const concern = selectVal === 'Custom' ? customVal : selectVal;
+
+    if (!name || !concern) {
+      showToast('error', 'Required fields missing', 'Please enter name and select a concern.');
+      return;
+    }
+    document.getElementById('risk-concern') || Object.assign(document.body.appendChild(document.createElement('input')), {id:'risk-concern',type:'hidden'});
+    document.getElementById('risk-concern').value = concern;
+    await origRunRisk();
+  };
+</script>
+</body>
+</html>
