@@ -18,6 +18,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', (req, res) => {
+  res.redirect('/login.html');
+});
+
 app.use(requestLogger);
 app.use('/api', rateLimiter);
 
