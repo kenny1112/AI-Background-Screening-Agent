@@ -11,12 +11,13 @@ const deleteRouter = require('./routes/deleteScreening');
 const requestLogger = require('./middleware/requestLogger');
 const rateLimiter = require('./middleware/rateLimiter');
 const errorHandler = require('./middleware/errorHandler');
+const path = require('path');
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(requestLogger);
 app.use('/api', rateLimiter);
 
